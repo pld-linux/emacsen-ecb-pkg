@@ -5,12 +5,12 @@
 Summary:	Emacs Code Browser IDE
 Summary(pl):	¦rodowisko prorgamistyczne dla Emacsa
 Name:		emacsen-%{_the_name}-pkg
-Version:	2.27
+Version:	2.26
 Release:	0.1
 License:	GPL
 Group:		Applications/Editors/Emacs
 Source0:	http://dl.sourceforge.net/%{_the_name}/%{_the_name}-%{version}.tar.gz
-# Source0-md5:	2ae7ed3c849dd159a2410b1745016535
+# Source0-md5:	89bea4c856b96a943e83f14ef650e753
 URL:		http://ecb.sf.net/
 BuildRequires:	emacsen-cedet-pkg
 %if %{with emacs}
@@ -124,6 +124,8 @@ mkdir -p $RPM_BUILD_ROOT%{_infodir}
 %if %{with emacs}
 mkdir -p $RPM_BUILD_ROOT%{_emacs_lispdir}
 %{__install} _emacs/*.{el,elc} $RPM_BUILD_ROOT%{_emacs_lispdir}
+rm _emacs/ecb-images/klaus.sh
+cp -a _emacs/ecb-images $RPM_BUILD_ROOT%{_emacs_lispdir}
 %endif
 
 %{__install} info-help/* $RPM_BUILD_ROOT%{_infodir}
@@ -140,6 +142,7 @@ rm -rf $RPM_BUILD_ROOT
 %files emacs
 %defattr(644,root,root,755)
 %{_emacs_lispdir}/*.elc
+%{_emacs_lispdir}/ecb-images
 %{_emacs_lispdir}/ecb-autoloads.el
 
 %files emacs-el

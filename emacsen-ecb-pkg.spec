@@ -6,7 +6,7 @@
 #
 %define		_the_name ecb
 Summary:	Emacs Code Browser IDE
-Summary(pl):	¦rodowisko prorgamistyczne dla Emacsa
+Summary(pl):	¦rodowisko programistyczne dla Emacsa
 Name:		emacsen-%{_the_name}-pkg
 Version:	2.26
 Release:	0.1

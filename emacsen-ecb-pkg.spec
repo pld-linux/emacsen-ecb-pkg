@@ -1,6 +1,9 @@
 # TODO: build for xemacs
+#
+# Conditional build:
 %bcond_with	xemacs	# Build without XEmacs support
 %bcond_without	emacs	# Build without GNU Emacs support
+#
 %define		_the_name ecb
 Summary:	Emacs Code Browser IDE
 Summary(pl):	¦rodowisko prorgamistyczne dla Emacsa
@@ -9,7 +12,7 @@ Version:	2.26
 Release:	0.1
 License:	GPL
 Group:		Applications/Editors/Emacs
-Source0:	http://dl.sourceforge.net/%{_the_name}/%{_the_name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/ecb/%{_the_name}-%{version}.tar.gz
 # Source0-md5:	89bea4c856b96a943e83f14ef650e753
 URL:		http://ecb.sf.net/
 BuildRequires:	emacsen-cedet-pkg
@@ -38,7 +41,6 @@ Ten pakiet zawiera pliki wspólne dla GNU Emacsa i XEmacsa.
 
 %define version_of() %{expand:%%(rpm -q %1 --queryformat '%%%%{version}-%%%%{release}')}
 
-%if %{with emacs}
 %package emacs
 Summary:	ECB compiled elisp files for GNU Emacs
 Summary(pl):	Skompilowany kod elisp ECB dla GNU Emacsa
@@ -64,10 +66,7 @@ This package contains ECB source elisp files for GNU Emacs
 
 %description emacs-el -l pl
 Pakiet zawiera ¼ród³owe pliki elisp z kodem ECB dla GNU Emacsa.
-%endif
 
-
-%if %{with xemacs}
 %package xemacs
 Summary:	ECB elisp files for XEmacs
 Summary(pl):	Kod elisp ECB dla XEmacsa
@@ -93,42 +92,37 @@ This package contains source ECB elisp files for  XEmacs
 
 %description xemacs-el -l pl
 Pakiet zawiera pliki ¼ród³owe elisp z kodem ECB dla XEmacsa.
-%endif
-
 
 %prep
 %setup -q -n %{_the_name}-%{version}
 
-
 %build
-
 %if %{with xemacs}
 mkdir _xemacs
 %endif
 
 %if %{with emacs}
 mkdir _emacs
-cp -a [^_]* _emacs
+cp -a [!_]* _emacs
 %{__make} -C _emacs \
 	EMACS=emacs \
 	CEDET=%{_datadir}/emacs/cedet
 %endif
 
 %install
-
-mkdir -p $RPM_BUILD_ROOT%{_infodir}
+install -d $RPM_BUILD_ROOT%{_infodir}
 
 %if %{with xemacs}
 %endif
 
 %if %{with emacs}
-mkdir -p $RPM_BUILD_ROOT%{_emacs_lispdir}
-%{__install} _emacs/*.{el,elc} $RPM_BUILD_ROOT%{_emacs_lispdir}
+install -d $RPM_BUILD_ROOT%{_emacs_lispdir}
+install _emacs/*.{el,elc} $RPM_BUILD_ROOT%{_emacs_lispdir}
 rm _emacs/ecb-images/klaus.sh
 cp -a _emacs/ecb-images $RPM_BUILD_ROOT%{_emacs_lispdir}
 %endif
 
-%{__install} info-help/* $RPM_BUILD_ROOT%{_infodir}
+install info-help/* $RPM_BUILD_ROOT%{_infodir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -136,7 +130,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc NEWS README RELEASE_NOTES html-help
-%{_infodir}/*
+%{_infodir}/*.info*
 
 %if %{with emacs}
 %files emacs
@@ -148,8 +142,8 @@ rm -rf $RPM_BUILD_ROOT
 %files emacs-el
 %defattr(644,root,root,755)
 # All except ecb-autoloads.el
-%{_emacs_lispdir}/[^e]*.el
-%{_emacs_lispdir}/ecb-[^a]*.el
+%{_emacs_lispdir}/[!e]*.el
+%{_emacs_lispdir}/ecb-[!a]*.el
 %{_emacs_lispdir}/ecb-autogen.el
 %endif
 

@@ -14,7 +14,7 @@ License:	GPL
 Group:		Applications/Editors/Emacs
 Source0:	http://dl.sourceforge.net/ecb/%{_the_name}-%{version}.tar.gz
 # Source0-md5:	89bea4c856b96a943e83f14ef650e753
-URL:		http://ecb.sf.net/
+URL:		http://ecb.sourceforge.net/
 BuildRequires:	emacsen-cedet-pkg
 %if %{with emacs}
 BuildRequires:	emacs
@@ -88,7 +88,7 @@ Group:		Applications/Editors/Emacs
 Requires:	%{name}-xemacs = %{version}-%{release}
 
 %description xemacs-el
-This package contains source ECB elisp files for  XEmacs
+This package contains source ECB elisp files for XEmacs
 
 %description xemacs-el -l pl
 Pakiet zawiera pliki ¼ród³owe elisp z kodem ECB dla XEmacsa.
@@ -110,6 +110,7 @@ cp -a [!_]* _emacs
 %endif
 
 %install
+rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_infodir}
 
 %if %{with xemacs}

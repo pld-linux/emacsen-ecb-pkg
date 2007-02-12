@@ -6,7 +6,7 @@
 #
 %define		_the_name ecb
 Summary:	Emacs Code Browser IDE
-Summary(pl.UTF-8):   Środowisko programistyczne dla Emacsa
+Summary(pl.UTF-8):	Środowisko programistyczne dla Emacsa
 Name:		emacsen-%{_the_name}-pkg
 Version:	2.26
 Release:	0.1
@@ -43,7 +43,7 @@ Ten pakiet zawiera pliki wspólne dla GNU Emacsa i XEmacsa.
 
 %package emacs
 Summary:	ECB compiled elisp files for GNU Emacs
-Summary(pl.UTF-8):   Skompilowany kod elisp ECB dla GNU Emacsa
+Summary(pl.UTF-8):	Skompilowany kod elisp ECB dla GNU Emacsa
 Group:		Applications/Editors/Emacs
 Requires:	%{name} = %{version}-%{release}
 Requires:	emacs = %{version_of emacs}
@@ -57,7 +57,7 @@ Pakiet zawiera skompilowane pliki elisp z kodem ECB dla GNU Emacsa.
 
 %package emacs-el
 Summary:	ECB elisp files for GNU Emacs
-Summary(pl.UTF-8):   Kod elisp ECB dla GNU Emacsa
+Summary(pl.UTF-8):	Kod elisp ECB dla GNU Emacsa
 Group:		Applications/Editors/Emacs
 Requires:	%{name}-emacs = %{version}-%{release}
 
@@ -69,7 +69,7 @@ Pakiet zawiera źródłowe pliki elisp z kodem ECB dla GNU Emacsa.
 
 %package xemacs
 Summary:	ECB elisp files for XEmacs
-Summary(pl.UTF-8):   Kod elisp ECB dla XEmacsa
+Summary(pl.UTF-8):	Kod elisp ECB dla XEmacsa
 Group:		Applications/Editors/Emacs
 Requires:	%{name} = %{version}-%{release}
 Requires:	xemacs = %{version_of xemacs}
@@ -83,7 +83,7 @@ Pakiet zawiera skompilowane pliki elisp z kodem ECB dla XEmacsa.
 
 %package xemacs-el
 Summary:	ECB elisp source files for XEmacs
-Summary(pl.UTF-8):   Kod źródłowy elisp ECB dla XEmacsa
+Summary(pl.UTF-8):	Kod źródłowy elisp ECB dla XEmacsa
 Group:		Applications/Editors/Emacs
 Requires:	%{name}-xemacs = %{version}-%{release}
 

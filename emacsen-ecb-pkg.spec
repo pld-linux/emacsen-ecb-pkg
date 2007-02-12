@@ -6,7 +6,7 @@
 #
 %define		_the_name ecb
 Summary:	Emacs Code Browser IDE
-Summary(pl):	¶rodowisko programistyczne dla Emacsa
+Summary(pl.UTF-8):   ≈örodowisko programistyczne dla Emacsa
 Name:		emacsen-%{_the_name}-pkg
 Version:	2.26
 Release:	0.1
@@ -33,17 +33,17 @@ browsing your sources comfortable with the mouse and the keyboard.
 
 This package contains files common to both GNU Emacs and XEmacs.
 
-%description -l pl
-ECB jest globalnym minor mode wy∂wietlaj±cym kilka w≥asnych okienek
-u≥atwiaj±cych przegl±danie kodu mysz± i klawiatur±.
+%description -l pl.UTF-8
+ECB jest globalnym minor mode wy≈õwietlajƒÖcym kilka w≈Çasnych okienek
+u≈ÇatwiajƒÖcych przeglƒÖdanie kodu myszƒÖ i klawiaturƒÖ.
 
-Ten pakiet zawiera pliki wspÛlne dla GNU Emacsa i XEmacsa.
+Ten pakiet zawiera pliki wsp√≥lne dla GNU Emacsa i XEmacsa.
 
 %define version_of() %{expand:%%(rpm -q %1 --queryformat '%%%%{version}-%%%%{release}')}
 
 %package emacs
 Summary:	ECB compiled elisp files for GNU Emacs
-Summary(pl):	Skompilowany kod elisp ECB dla GNU Emacsa
+Summary(pl.UTF-8):   Skompilowany kod elisp ECB dla GNU Emacsa
 Group:		Applications/Editors/Emacs
 Requires:	%{name} = %{version}-%{release}
 Requires:	emacs = %{version_of emacs}
@@ -52,24 +52,24 @@ Provides:	cedet-elisp-code = %{version}-%{release}
 %description emacs
 This package contains compiled elisp files needed to run ECB on GNU Emacs
 
-%description emacs -l pl
+%description emacs -l pl.UTF-8
 Pakiet zawiera skompilowane pliki elisp z kodem ECB dla GNU Emacsa.
 
 %package emacs-el
 Summary:	ECB elisp files for GNU Emacs
-Summary(pl):	Kod elisp ECB dla GNU Emacsa
+Summary(pl.UTF-8):   Kod elisp ECB dla GNU Emacsa
 Group:		Applications/Editors/Emacs
 Requires:	%{name}-emacs = %{version}-%{release}
 
 %description emacs-el
 This package contains ECB source elisp files for GNU Emacs
 
-%description emacs-el -l pl
-Pakiet zawiera ºrÛd≥owe pliki elisp z kodem ECB dla GNU Emacsa.
+%description emacs-el -l pl.UTF-8
+Pakiet zawiera ≈∫r√≥d≈Çowe pliki elisp z kodem ECB dla GNU Emacsa.
 
 %package xemacs
 Summary:	ECB elisp files for XEmacs
-Summary(pl):	Kod elisp ECB dla XEmacsa
+Summary(pl.UTF-8):   Kod elisp ECB dla XEmacsa
 Group:		Applications/Editors/Emacs
 Requires:	%{name} = %{version}-%{release}
 Requires:	xemacs = %{version_of xemacs}
@@ -78,20 +78,20 @@ Provides:	cedet-elisp-code = %{version}-%{release}
 %description xemacs
 This package contains compiled elisp files needed to run ECB on XEmacs
 
-%description xemacs -l pl
+%description xemacs -l pl.UTF-8
 Pakiet zawiera skompilowane pliki elisp z kodem ECB dla XEmacsa.
 
 %package xemacs-el
 Summary:	ECB elisp source files for XEmacs
-Summary(pl):	Kod ºrÛd≥owy elisp ECB dla XEmacsa
+Summary(pl.UTF-8):   Kod ≈∫r√≥d≈Çowy elisp ECB dla XEmacsa
 Group:		Applications/Editors/Emacs
 Requires:	%{name}-xemacs = %{version}-%{release}
 
 %description xemacs-el
 This package contains source ECB elisp files for XEmacs
 
-%description xemacs-el -l pl
-Pakiet zawiera pliki ºrÛd≥owe elisp z kodem ECB dla XEmacsa.
+%description xemacs-el -l pl.UTF-8
+Pakiet zawiera pliki ≈∫r√≥d≈Çowe elisp z kodem ECB dla XEmacsa.
 
 %prep
 %setup -q -n %{_the_name}-%{version}

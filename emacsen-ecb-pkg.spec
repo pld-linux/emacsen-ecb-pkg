@@ -1,4 +1,5 @@
-# TODO: build for xemacs
+# TODO
+# - build for xemacs
 #
 # Conditional build:
 %bcond_with	xemacs	# Build without XEmacs support
@@ -39,15 +40,13 @@ ułatwiających przeglądanie kodu myszą i klawiaturą.
 
 Ten pakiet zawiera pliki wspólne dla GNU Emacsa i XEmacsa.
 
-%define version_of() %{expand:%%(rpm -q %1 --queryformat '%%%%{version}-%%%%{release}')}
-
 %package emacs
 Summary:	ECB compiled elisp files for GNU Emacs
 Summary(pl.UTF-8):	Skompilowany kod elisp ECB dla GNU Emacsa
 Group:		Applications/Editors/Emacs
 Requires:	%{name} = %{version}-%{release}
-Requires:	emacs = %{version_of emacs}
 Provides:	cedet-elisp-code = %{version}-%{release}
+%requires_eq emacs
 
 %description emacs
 This package contains compiled elisp files needed to run ECB on GNU Emacs
@@ -72,8 +71,8 @@ Summary:	ECB elisp files for XEmacs
 Summary(pl.UTF-8):	Kod elisp ECB dla XEmacsa
 Group:		Applications/Editors/Emacs
 Requires:	%{name} = %{version}-%{release}
-Requires:	xemacs = %{version_of xemacs}
 Provides:	cedet-elisp-code = %{version}-%{release}
+%requires_eq xemacs
 
 %description xemacs
 This package contains compiled elisp files needed to run ECB on XEmacs
